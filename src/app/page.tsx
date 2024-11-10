@@ -1,11 +1,18 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { CreatePost } from "~/app/_components/create-post";
-import { api } from "~/trpc/server";
-import styles from "./index.module.css";
+import { CreatePost } from '~/app/_components/create-post';
+import { api } from '~/trpc/server';
+import styles from './index.module.css';
+import { unstable_noStore as noStore } from 'next/cache';
+
+async function getHello() {
+  noStore();
+  const hello = await api.post.hello.query({ text: 'from tRPC' });
+  return hello;
+}
 
 export default async function Home() {
-  const hello = await api.post.hello.query({ text: "from tRPC" });
+  const hello = await getHello();
 
   return (
     <main className={styles.main}>
@@ -39,7 +46,7 @@ export default async function Home() {
         </div>
         <div className={styles.showcaseContainer}>
           <p className={styles.showcaseText}>
-            {hello ? hello.greeting : "Loading tRPC query..."}
+            {hello ? hello.greeting : 'Loading tRPC query...'}
           </p>
         </div>
 
