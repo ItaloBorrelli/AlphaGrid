@@ -22,26 +22,23 @@ jobs:
         id: branch_name
         uses: tj-actions/branch-names@v8
 
+  env:
+    NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+
   create_neon_branch:
-    name: Create Neon Branch
-    outputs:
-      db_url: ${{ steps.create_neon_branch_encode.outputs.db_url }}
-      db_url_with_pooler: ${{ steps.create_neon_branch_encode.outputs.db_url_with_pooler }}
-    needs: setup
-    if: |
-      github.event_name == 'pull_request' && (
-      github.event.action == 'synchronize'
-      || github.event.action == 'opened'
-      || github.event.action == 'reopened')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create Neon Branch
-        id: create_neon_branch
-        uses: neondatabase/create-branch-action@v5
+    name: Create Neon Branch with GitHub Actions Demo
+    run-name: Create a Neon Branch 🚀
+    jobs:
+      Create-Neon-Branch:
+        uses: neondatabase/create-branch-action@v4
         with:
-          project_id: ${{ vars.NEON_PROJECT_ID }}
-          branch_name: preview/pr-${{ github.event.number }}-${{ needs.setup.outputs.branch }}
-          api_key: ${{ secrets.NEON_API_KEY }}
+          project_id: rapid-haze-373089
+          parent_id: br-long-forest-224191
+          branch_name: from_action_reusable
+          api_key: {{ secrets.NEON_API_KEY }}
+        id: create-branch
+      - run: echo project_id ${{ steps.create-branch.outputs.project_id}}
+      - run: echo branch_id ${{ steps.create-branch.outputs.branch_id}}
 
 # The step above creates a new Neon branch.
 # You may want to do something with the new branch, such as run migrations, run tests
@@ -60,14 +57,13 @@ jobs:
 #          # DATABASE_URL: "${{ steps.create_neon_branch.outputs.db_url }}"
 
   delete_neon_branch:
-    name: Delete Neon Branch
-    needs: setup
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Delete Neon Branch
+    name: Delete Neon Branch with GitHub Actions Demo
+    run-name: Delete a Neon Branch 🚀
+    on: [push]
+    jobs:
+      delete-neon-branch:
         uses: neondatabase/delete-branch-action@v3
         with:
-          project_id: ${{ vars.NEON_PROJECT_ID }}
-          branch: preview/pr-${{ github.event.number }}-${{ needs.setup.outputs.branch }}
+          project_id: rapid-haze-373089
+          branch: br-long-forest-224191
           api_key: ${{ secrets.NEON_API_KEY }}
