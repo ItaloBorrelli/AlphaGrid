@@ -1,8 +1,10 @@
+import type React from 'react';
 import '~/styles/globals.css';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { ClerkProvider } from '@clerk/nextjs';
 import { TRPCReactProvider } from '~/trpc/react';
+
 import { TopNav } from './_components/topnav';
 
 const inter = Inter({

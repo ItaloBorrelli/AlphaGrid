@@ -11,4 +11,11 @@
         "typescriptreact",
         "html"
     ],
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    }
 }
