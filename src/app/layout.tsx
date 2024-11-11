@@ -1,5 +1,4 @@
 import '~/styles/globals.css';
-
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { ClerkProvider } from '@clerk/nextjs';
@@ -25,7 +24,7 @@ export default function RootLayout({
     <ClerkProvider>
       <TRPCReactProvider cookies={cookies().toString()}>
         <html lang="en">
-          <body className={`font-sans ${inter.className} flex flex-col gap-4`}>
+          <body className={`${inter.className} flex flex-col gap-4 font-sans`}>
             <TopNav />
             {children}
           </body>
