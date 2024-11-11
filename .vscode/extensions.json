@@ -5,6 +5,7 @@
     "ms-vscode.typescript-tslint-plugin",
     "ms-vscode.vscode-typescript-next",
     "bradlc.vscode-tailwindcss",
-    "github.vscode-github-actions"
+    "github.vscode-github-actions",
+    "rvest.vs-code-prettier-eslint"
   ]
 }
