@@ -16,6 +16,7 @@ jobs:
       - name: Run markdownlint
         uses: DavidAnson/markdownlint-cli2-action@v17
         with:
+          config: .markdownlint.jsonc
           globs: '**/*.md'
   eslint:
     runs-on: ubuntu-latest
