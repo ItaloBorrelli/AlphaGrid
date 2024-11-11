@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "ms-vscode.typescript-tslint-plugin",
     "ms-vscode.vscode-typescript-next",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "github.vscode-github-actions"
   ]
 }
