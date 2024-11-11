@@ -6,6 +6,7 @@
     "ms-vscode.vscode-typescript-next",
     "bradlc.vscode-tailwindcss",
     "github.vscode-github-actions",
-    "rvest.vs-code-prettier-eslint"
+    "rvest.vs-code-prettier-eslint",
+    "davidanson.vscode-markdownlint"
   ]
 }
