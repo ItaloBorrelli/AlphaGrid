@@ -18,7 +18,4 @@
   "[json,jsonc,yml]": {
     "editor.tabSize": 2
   },
-  "markdownlint.customRules": [
-    ".markdownlint.json"
-  ],
 }

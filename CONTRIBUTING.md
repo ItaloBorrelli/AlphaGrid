@@ -14,23 +14,22 @@ clarity.
 
 ## Commit Message Guidelines
 
-To maintain a clear and consistent history, we follow these commit message guidelines:
-
-    Format: [#<issue-number>] <Commit Message>
-    Start the commit message with an issue number enclosed in square brackets.
-    Write a concise summary in the imperative mood, as if completing the sentence
-    "If applied, this commit will..." 
+To maintain a clear and consistent history, we use the following format
+`[#<issue-number>] Commit Message`. Start the commit message with an issue
+number enclosed in square brackets and add a concise summary in the imperative
+mood, as if completing the sentence. "If applied, this commit will...".
 
 Example Commit Message
 
 ```bash
 git commit -m "[#42] Add user authentication logic"
--m "Implemented a basic authentication system including login and logout functionality. Added necessary unit tests."
+-m "Implemented a basic authentication system including login and logout."
 ```
 
 ### Optional
 
-To simplify the
+To simplify the process you can create a script to automatically prefix the
+commit as long as the branch starts with a number.
 
 ```bash
 git config --global alias.cm '!f() {
@@ -44,10 +43,13 @@ git config --global alias.cm '!f() {
 }; f'
 ```
 
+This can be used as `git cm "Commit message"`.
+
 ## Pull Requests
 
 ## Reporting Bugs/Feature Requests
 
 ## Questions or Concerns
 
-Feel free to reach out if you have any questions or concerns regarding the contribution process.
+Feel free to reach out if you have any questions or concerns regarding the
+contribution process.
